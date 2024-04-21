@@ -1,4 +1,4 @@
-package net.leibi.pocgraphql;
+package net.leibi.dataservice1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
