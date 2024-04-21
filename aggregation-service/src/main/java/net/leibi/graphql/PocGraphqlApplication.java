@@ -1,4 +1,4 @@
-package net.leibi.dataservice1;
+package net.leibi.graphql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
