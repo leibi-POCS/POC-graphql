@@ -1,4 +1,4 @@
-package net.leibi.dataservice1;
+package net.leibi.graphql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

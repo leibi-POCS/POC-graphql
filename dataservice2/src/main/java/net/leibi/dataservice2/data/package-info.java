@@ -3,5 +3,5 @@
 
 package net.leibi.dataservice2.data;
 
-import io.micrometer.common.lang.NonNullFields;
-import reactor.util.annotation.NonNullApi;
+import org.springframework.lang.NonNullApi;
+import org.springframework.lang.NonNullFields;
