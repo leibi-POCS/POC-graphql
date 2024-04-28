@@ -27,4 +27,7 @@ public class BookDataFetcher {
   public Book bookById(@InputArgument String id) {
     return dataService.getBookById(id);
   }
+
+
+
 }

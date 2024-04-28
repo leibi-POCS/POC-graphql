@@ -1,4 +1,4 @@
-package net.leibi.books;
+package net.leibi.author;
 
 import graphql.execution.instrumentation.Instrumentation;
 import graphql.execution.instrumentation.tracing.TracingInstrumentation;
@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.IntStream;
 import lombok.extern.log4j.Log4j2;
-import net.leibi.books.generated.types.Book;
-import net.leibi.books.service.DataService;
+import net.leibi.author.service.DataService;
+import net.leibi.books.generated.types.Author;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,36 +17,36 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @Log4j2
-public class BookServiceApplication {
+public class AuthorServiceApplication {
   private final DataService dataService;
 
   @Value("${application.upperbound:1000}")
   private int upperBound;
 
-  public BookServiceApplication(DataService dataService) {
+  public AuthorServiceApplication(DataService dataService) {
     this.dataService = dataService;
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(BookServiceApplication.class, args);
+    SpringApplication.run(AuthorServiceApplication.class, args);
   }
 
   @PostConstruct
   public void init() {
-    List<Book> data = getRandomData();
+    List<Author> data = getRandomData();
     dataService.add(data);
   }
 
-  private List<Book> getRandomData() {
-    log.info("Creating {} random books", upperBound);
+  private List<Author> getRandomData() {
+    log.info("Creating {} random Authors", upperBound);
     return IntStream.range(1, upperBound)
-        .mapToObj(i -> new Book(UUID.randomUUID().toString(), String.valueOf(i), i))
+        .mapToObj(i -> new Author(UUID.randomUUID().toString(), String.valueOf(i)))
         .toList();
   }
 
   @Bean
-  @ConditionalOnProperty( prefix = "graphql.tracing", name = "enabled", matchIfMissing = true)
-  public Instrumentation tracingInstrumentation(){
+  @ConditionalOnProperty(prefix = "graphql.tracing", name = "enabled", matchIfMissing = true)
+  public Instrumentation tracingInstrumentation() {
     return new TracingInstrumentation();
   }
 }
