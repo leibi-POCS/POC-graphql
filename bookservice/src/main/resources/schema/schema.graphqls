@@ -1,0 +1,10 @@
+type Query {
+    books(titleFilter: String): Book
+    bookById(id: ID): Book
+}
+
+type Book {
+    id: ID
+    name: String
+    pageCount: Int
+}
