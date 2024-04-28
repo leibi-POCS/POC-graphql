@@ -1,12 +1,12 @@
 package net.leibi.books.service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
-import net.leibi.books.data.Book;
+
 import org.springframework.stereotype.Service;
+
+import net.leibi.books.generated.types.Book;
 
 @Service
 public final class DataServiceImpl implements DataService {
@@ -27,7 +27,7 @@ public final class DataServiceImpl implements DataService {
   }
 
   @Override
-  public Book getBookById(UUID id) {
-    return dataSet.stream().filter(book -> book.id().equals(id)).findFirst().orElseThrow();
+  public Book getBookById(String id) {
+    return dataSet.stream().filter(book -> book.getId().equals(id)).findFirst().orElseThrow();
   }
 }

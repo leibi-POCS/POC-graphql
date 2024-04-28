@@ -3,6 +3,7 @@ plugins {
     id("org.springframework.boot") version "3.2.5"
     id("io.spring.dependency-management") version "1.1.4"
     //id("org.graalvm.buildtools.native") version "0.9.28"
+    id("com.netflix.dgs.codegen") version "6.1.4"
 }
 
 group = "net.leibi"
@@ -38,4 +39,12 @@ dependencies {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+
+tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
+    generateClientv2 = true
+    packageName = "net.leibi.books.generated"
+}
+tasks.withType<JavaCompile> { dependsOn("generateJava") }
+
 

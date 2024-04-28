@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.IntStream;
 import lombok.extern.log4j.Log4j2;
-import net.leibi.books.data.Book;
+import net.leibi.books.generated.types.Book;
 import net.leibi.books.service.DataService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -36,7 +36,7 @@ public class BookServiceApplication {
   private List<Book> getRandomData() {
     log.info("Creating {} random books", upperBound);
     return IntStream.range(1, upperBound)
-        .mapToObj(i -> new Book(UUID.randomUUID(), String.valueOf(i), i))
+        .mapToObj(i -> new Book(UUID.randomUUID().toString(), String.valueOf(i), i))
         .toList();
   }
 }

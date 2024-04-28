@@ -3,13 +3,9 @@ package net.leibi.books.datafetcher;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
-
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import net.leibi.books.data.Book;
+import net.leibi.books.generated.types.Book;
 import net.leibi.books.service.DataService;
 
 @DgsComponent
@@ -24,12 +20,11 @@ public class BookDataFetcher {
       return dataService.getData();
     }
 
-    return dataService.getData().stream()
-        .filter(s -> s.name().contains(titleFilter)).toList();
+    return dataService.getData().stream().filter(s -> s.getName().contains(titleFilter)).toList();
   }
 
   @DgsQuery
   public Book bookById(@InputArgument String id) {
-    return dataService.getBookById(UUID.fromString(id));
+    return dataService.getBookById(id);
   }
 }

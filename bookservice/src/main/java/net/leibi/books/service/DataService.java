@@ -1,10 +1,9 @@
 package net.leibi.books.service;
 
-import net.leibi.books.data.Book;
-
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
+
+import net.leibi.books.generated.types.Book;
 
 public sealed interface DataService permits DataServiceImpl {
     List<Book> getData();
@@ -12,5 +11,5 @@ public sealed interface DataService permits DataServiceImpl {
 
     void add(List<Book> data);
 
-    Book getBookById(UUID id);
+    Book getBookById(String id);
 }
