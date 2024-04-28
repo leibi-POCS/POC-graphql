@@ -1,5 +1,5 @@
 type Query {
-    books(titleFilter: String): Book
+    books(titleFilter: String): [Book]
     bookById(id: ID): Book
 }
 
