@@ -22,25 +22,25 @@ public class AuthorsDataFetcher
   private final DataService dataService;
 
   @DgsQuery
-  public List<Author> author(@InputArgument String titleFilter) {
-    if (titleFilter == null) {
+  public List<Author> authors(@InputArgument String nameFilter) {
+    if (nameFilter == null) {
       return dataService.getData();
     }
 
-    return dataService.getData().stream().filter(s -> s.getName().contains(titleFilter)).toList();
+    return dataService.getData().stream().filter(s -> s.getName().contains(nameFilter)).toList();
   }
 
   @DgsQuery
-  public Author bookById(@InputArgument String id) {
+  public Author authorById(@InputArgument String id) {
     return dataService.getAuthorById(id);
   }
 
-  @DgsEntityFetcher(name = "Show")
+  @DgsEntityFetcher(name = "Book")
   public Book book(Map<String, Object> values) {
     return new Book((String) values.get("id"), null);
   }
 
-  @DgsData(parentType = "Book", field = "author")
+  @DgsData(parentType = "Book", field="author")
   public Author authorFetcher(DgsDataFetchingEnvironment dataFetchingEnvironment)  {
     Book book = dataFetchingEnvironment.getSource();
     return dataService.getAuthorByBookId(book.getId());
