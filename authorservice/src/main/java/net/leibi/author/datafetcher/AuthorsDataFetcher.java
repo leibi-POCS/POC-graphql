@@ -27,7 +27,7 @@ public class AuthorsDataFetcher
       return dataService.getData();
     }
 
-    return dataService.getData().stream().filter(s -> s.getName().contains(nameFilter)).toList();
+    return dataService.getAuthorsFiltered(nameFilter);
   }
 
   @DgsQuery
