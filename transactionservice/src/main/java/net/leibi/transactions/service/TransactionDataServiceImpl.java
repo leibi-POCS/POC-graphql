@@ -47,7 +47,7 @@ public class TransactionDataServiceImpl implements TransactionDataService {
     }
 
     @Override
-    public List<Transaction> getTransactionsByMinAmount(Float minAmount) {
+    public List<Transaction> getTransactionsByMinAmount(Double minAmount) {
         return mapAccountIdsToTransactions.values()
                 .stream().flatMap(List::stream)
                 .filter(transaction -> transaction.getAmount() > minAmount)

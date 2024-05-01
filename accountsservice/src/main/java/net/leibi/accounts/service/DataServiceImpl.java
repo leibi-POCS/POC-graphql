@@ -22,8 +22,8 @@ public final class DataServiceImpl implements DataService {
         return List.copyOf(dataSet);
     }
 
-    public void add(Account Account) {
-        dataSet.add(Account);
+    public void add(Account account) {
+        dataSet.add(account);
     }
 
     @Override

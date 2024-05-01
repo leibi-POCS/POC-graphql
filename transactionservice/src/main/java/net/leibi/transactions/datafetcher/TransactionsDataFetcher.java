@@ -18,7 +18,7 @@ public class TransactionsDataFetcher {
     private final TransactionDataService transactionDataService;
 
     @DgsQuery
-    public List<Transaction> transactions(@InputArgument Float minAmount) {
+    public List<Transaction> transactions(@InputArgument Double minAmount) {
         if (minAmount == null) {
             return transactionDataService.getData();
         }

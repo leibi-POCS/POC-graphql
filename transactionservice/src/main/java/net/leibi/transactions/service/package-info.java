@@ -1,7 +1,7 @@
 @NonNullApi
 @NonNullFields
 
-package net.leibi.accounts.service;
+package net.leibi.transactions.service;
 
 
 import org.springframework.lang.NonNullApi;

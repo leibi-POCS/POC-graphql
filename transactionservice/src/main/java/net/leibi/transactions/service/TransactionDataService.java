@@ -16,5 +16,5 @@ public interface TransactionDataService {
 
     List<Transaction> getTransactionsByAccountId(String accountId);
 
-    List<Transaction> getTransactionsByMinAmount(Float minAmount);
+    List<Transaction> getTransactionsByMinAmount(Double minAmount);
 }
