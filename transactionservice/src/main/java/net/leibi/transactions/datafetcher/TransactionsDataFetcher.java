@@ -44,7 +44,7 @@ public class TransactionsDataFetcher {
     @DgsData(parentType = "Account", field = "transactions")
     public List<Transaction> transactionFetcher(DgsDataFetchingEnvironment dataFetchingEnvironment) {
         Account account = dataFetchingEnvironment.getSource();
-        log.info("get transactions for account: {}", account);
+        log.debug("get transactions for account: {}", account.getId());
         return transactionDataService.getTransactionsByAccountId(account.getId());
     }
 

@@ -58,11 +58,7 @@ public class TransactionServiceApplication {
         transactionDataService.add(data);
     }
 
-    @Bean
-    @ConditionalOnProperty(prefix = "graphql.tracing", name = "enabled", matchIfMissing = true)
-    public Instrumentation tracingInstrumentation() {
-        return new TracingInstrumentation();
-    }
+
 
     private List<Transaction> getRandomData() {
         log.info("Creating {} random Transactions", upperBound);

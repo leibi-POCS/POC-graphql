@@ -14,7 +14,7 @@ import java.util.Random;
 
 @Service
 @Observed
-public final class DataServiceImpl implements DataService {
+public class DataServiceImpl implements DataService {
 
     private final List<Account> dataSet = new ArrayList<>();
     @Value("${application.upperbound:1000}")

@@ -6,7 +6,7 @@ import net.leibi.accounts.generated.types.AccountsByBank;
 
 import java.util.List;
 
-public sealed interface DataService permits DataServiceImpl {
+public interface DataService {
     List<Account> getData();
 
     void add(Account account);
