@@ -1,15 +1,20 @@
 package net.leibi.accounts.service;
 
 import net.leibi.books.generated.types.Account;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public final class DataServiceImpl implements DataService {
 
     private final List<Account> dataSet = new ArrayList<>();
+    @Value("${application.upperbound:1000}")
+    private int upperBound;
 
     public List<Account> getData() {
         return List.copyOf(dataSet);
@@ -26,6 +31,11 @@ public final class DataServiceImpl implements DataService {
 
     @Override
     public Account getAccountById(String id) {
-        return dataSet.stream().filter(Account -> Account.getId().equals(id)).findFirst().orElseThrow();
+        return dataSet.stream().filter(account -> account.getId().equals(id)).findFirst().orElseThrow();
+    }
+
+    @Override
+    public Account getRandomAccount() {
+        return dataSet.get(Random.from(new SecureRandom()).nextInt(upperBound - 1));
     }
 }

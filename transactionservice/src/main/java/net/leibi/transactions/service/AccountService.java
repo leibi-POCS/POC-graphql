@@ -5,4 +5,6 @@ import net.leibi.books.generated.types.Account;
 public interface AccountService {
 
     Account getAccountById(String id);
+
+    Account getRandomAccount(Integer i);
 }

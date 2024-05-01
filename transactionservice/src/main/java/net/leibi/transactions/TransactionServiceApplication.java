@@ -13,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.stream.IntStream;
 @SpringBootApplication
 @Log4j2
 @EnableCaching
+@EnableFeignClients
 public class TransactionServiceApplication {
     private final TransactionDataService transactionDataService;
     private final AccountService accountService;
@@ -59,8 +61,9 @@ public class TransactionServiceApplication {
 
     private @NotNull Transaction getTransaction(int i) {
         final var bookingText = String.valueOf(i);
-        final var id = UUID.randomUUID().toString();
-        var account = accountService.getAccountById(id);
+        var reducedNumber = i%100;
+        var account = accountService.getRandomAccount(reducedNumber);
+        var id = UUID.randomUUID().toString();
         return new Transaction(id, bookingText, account, (double) i);
     }
 }

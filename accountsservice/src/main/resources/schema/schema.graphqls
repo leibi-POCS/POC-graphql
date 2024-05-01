@@ -16,6 +16,6 @@ type Bank{
     id: ID
     name: String
     bic: String
-    bankSortNumner: String
+    bankSortNumber: String
     branch: String
 }

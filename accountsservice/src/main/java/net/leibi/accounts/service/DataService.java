@@ -12,4 +12,6 @@ public sealed interface DataService permits DataServiceImpl {
     void add(List<Account> data);
 
     Account getAccountById(String id);
+
+    Account getRandomAccount();
 }
