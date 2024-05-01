@@ -6,12 +6,16 @@ import net.leibi.transactions.generated.types.Account;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 @Log4j2
 public class AccountsDataFetcher {
-
     private final AccountsApi accountsApi;
+
+    private final Map<Integer, Account> cache = new HashMap<>();
 
     @Cacheable("accountsById")
     public Account getAccountById(String accountId) {
@@ -20,7 +24,9 @@ public class AccountsDataFetcher {
 
     @Cacheable("randomAccountInFetcher")
     public Account getRandomAccount(Integer accountRelatedId) {
-        log.info("get random account for {}", accountRelatedId);
-        return accountsApi.getRandomAccount();
+        return cache.computeIfAbsent(accountRelatedId, id -> {
+            log.info("get random account for {}", id);
+            return accountsApi.getRandomAccount();
+        });
     }
 }

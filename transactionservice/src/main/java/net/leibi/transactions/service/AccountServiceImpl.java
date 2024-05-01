@@ -23,7 +23,6 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Cacheable("randomAccountinService")
     public Account getRandomAccount(Integer i) {
-        log.info("Getting account with {}", i);
         return accountsDataFetcher.getRandomAccount(i);
     }
 }

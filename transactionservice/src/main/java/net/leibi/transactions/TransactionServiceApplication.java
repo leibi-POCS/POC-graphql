@@ -16,7 +16,9 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
+import java.security.SecureRandom;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
@@ -43,6 +45,7 @@ public class TransactionServiceApplication {
     @PostConstruct
     public void init() {
         List<Transaction> data = getRandomData();
+        log.info("got {} transactions", data.size());
         transactionDataService.add(data);
     }
 
@@ -55,16 +58,19 @@ public class TransactionServiceApplication {
     private List<Transaction> getRandomData() {
         log.info("Creating {} random Transactions", upperBound);
         return IntStream.range(1, upperBound)
-                .parallel()
                 .mapToObj(this::getTransaction)
                 .toList();
     }
 
     private @NotNull Transaction getTransaction(int i) {
+        if (i % 1000 == 0) {
+            log.info("getTransaction {}", i);
+        }
         final var bookingText = String.valueOf(i);
         var reducedNumber = i % 100;
         var accountId = accountService.getRandomAccount(reducedNumber).getId();
         var id = UUID.randomUUID().toString();
-        return new Transaction(id, bookingText, accountId, (double) i);
+        var amount = Double.valueOf(Random.from(new SecureRandom()).nextFloat(1000, 1000000));
+        return new Transaction(id, bookingText, accountId, amount);
     }
 }
