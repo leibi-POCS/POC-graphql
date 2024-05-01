@@ -19,11 +19,14 @@ public class TransactionsDataFetcher {
 
     @DgsQuery
     public List<Transaction> transactions(@InputArgument Double minAmount) {
+        List<Transaction> transactions;
         if (minAmount == null) {
-            return transactionDataService.getData();
+            transactions = transactionDataService.getData();
+        } else {
+            transactions = transactionDataService.getTransactionsByMinAmount(minAmount);
         }
-
-        return transactionDataService.getTransactionsByMinAmount(minAmount);
+        log.info("returning {} transactions", transactions.size());
+        return transactions;
     }
 
     @DgsQuery

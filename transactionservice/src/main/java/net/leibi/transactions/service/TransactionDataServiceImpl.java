@@ -34,8 +34,8 @@ public class TransactionDataServiceImpl implements TransactionDataService {
 
     @Override
     public Transaction getTransactionById(String id) {
-        return mapAccountIdsToTransactions.values().
-                stream()
+        return mapAccountIdsToTransactions.values()
+                .parallelStream()
                 .flatMap(List::stream)
                 .filter(transaction -> transaction.getId().equals(id))
                 .findFirst().orElseThrow();
@@ -49,7 +49,8 @@ public class TransactionDataServiceImpl implements TransactionDataService {
     @Override
     public List<Transaction> getTransactionsByMinAmount(Double minAmount) {
         return mapAccountIdsToTransactions.values()
-                .stream().flatMap(List::stream)
+                .parallelStream()
+                .flatMap(List::stream)
                 .filter(transaction -> transaction.getAmount() > minAmount)
                 .toList();
     }

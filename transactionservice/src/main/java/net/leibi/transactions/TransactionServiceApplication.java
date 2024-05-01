@@ -68,7 +68,7 @@ public class TransactionServiceApplication {
             log.info("getTransaction {}", i);
         }
         final var bookingText = String.valueOf(i);
-        var reducedNumber = i % 100;
+        var reducedNumber = i % 10000;
         var accountId = accountService.getRandomAccount(reducedNumber).getId();
         var id = UUID.randomUUID().toString();
         var amount = Double.valueOf(RANDOMFROM.nextFloat(1000, 1000000));
