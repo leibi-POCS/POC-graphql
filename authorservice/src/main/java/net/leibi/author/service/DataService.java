@@ -1,6 +1,6 @@
 package net.leibi.author.service;
 
-import net.leibi.books.generated.types.Author;
+import net.leibi.accounts.generated.types.Author;
 
 import java.util.List;
 

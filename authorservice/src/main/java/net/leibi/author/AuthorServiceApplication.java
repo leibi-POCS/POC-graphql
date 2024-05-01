@@ -5,7 +5,7 @@ import graphql.execution.instrumentation.tracing.TracingInstrumentation;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j2;
 import net.leibi.author.service.DataService;
-import net.leibi.books.generated.types.Author;
+import net.leibi.accounts.generated.types.Author;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

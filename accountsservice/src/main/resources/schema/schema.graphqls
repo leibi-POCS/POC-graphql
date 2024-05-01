@@ -1,0 +1,21 @@
+type Query {
+    accounts(nameFinder: String): [Account]
+    accountById(id: ID): Account
+}
+
+type Account{
+    id: ID
+    name: String
+    accountNumber: String
+    iban: String
+    bank: Bank
+
+}
+
+type Bank{
+    id: ID
+    name: String
+    bic: String
+    bankSortNumner: String
+    branch: String
+}

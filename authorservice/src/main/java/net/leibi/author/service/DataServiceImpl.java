@@ -1,6 +1,6 @@
 package net.leibi.author.service;
 
-import net.leibi.books.generated.types.Author;
+import net.leibi.accounts.generated.types.Author;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
