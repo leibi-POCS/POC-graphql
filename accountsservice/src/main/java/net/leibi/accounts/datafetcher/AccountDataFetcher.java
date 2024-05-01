@@ -36,8 +36,8 @@ public class AccountDataFetcher {
     }
 
     @DgsQuery
-    public List<Account> accountsByBic(@InputArgument String bic){
-        return dataService.getAccountsByBic(bic);
+    public List<Account> accountsByBic(@InputArgument String bic, @InputArgument Integer page, @InputArgument Integer pageSize){
+        return dataService.getAccountsByBic(bic, page, pageSize);
     }
 
 

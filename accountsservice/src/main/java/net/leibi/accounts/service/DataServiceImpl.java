@@ -43,12 +43,16 @@ public final class DataServiceImpl implements DataService {
 
     @Override
     public AccountsByBank getAccountsByBankByBic(String bic) {
-        var accounts = getAccountsByBic(bic);
+        var accounts = getAccountsByBic(bic, 0, dataSet.size());
         return new AccountsByBank(accounts.getFirst().getBank(), accounts);
     }
 
     @Override
-    public List<Account> getAccountsByBic(String bic) {
-        return dataSet.stream().filter(account -> account.getBank().getBic().equalsIgnoreCase(bic)).toList();
+    public List<Account> getAccountsByBic(String bic, Integer page, Integer pageSize) {
+        return dataSet.stream()
+                .filter(account -> account.getBank().getBic().equalsIgnoreCase(bic))
+                .skip((long) page * pageSize)
+                .limit(pageSize)
+                .toList();
     }
 }

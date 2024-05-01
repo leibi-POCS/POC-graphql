@@ -2,7 +2,7 @@ type Query {
     accounts(nameFinder: String): [Account]
     accountById(id: ID): Account
     accountsByBank(bic: String): AccountsByBank
-    accountsByBic(bic: String): [Account]
+    accountsByBic(bic: String, page: Int, pageSize: Int): [Account]
 }
 
 type Account{

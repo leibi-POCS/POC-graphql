@@ -19,5 +19,5 @@ public sealed interface DataService permits DataServiceImpl {
 
     AccountsByBank getAccountsByBankByBic(String bic);
 
-    List<Account> getAccountsByBic(String bic);
+    List<Account> getAccountsByBic(String bic, Integer page, Integer pageSize);
 }
