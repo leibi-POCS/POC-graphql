@@ -5,6 +5,7 @@ import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
 import lombok.RequiredArgsConstructor;
 import net.leibi.accounts.generated.types.Account;
+import net.leibi.accounts.generated.types.AccountsByBank;
 import net.leibi.accounts.service.DataService;
 
 import java.util.List;
@@ -28,6 +29,17 @@ public class AccountDataFetcher {
     public Account accountById(@InputArgument String id) {
         return dataService.getAccountById(id);
     }
+
+    @DgsQuery
+    public AccountsByBank accountsByBank(@InputArgument String bic) {
+        return dataService.getAccountsByBankByBic(bic);
+    }
+
+    @DgsQuery
+    public List<Account> accountsByBic(@InputArgument String bic){
+        return dataService.getAccountsByBic(bic);
+    }
+
 
 
 }

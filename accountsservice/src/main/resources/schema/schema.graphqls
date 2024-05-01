@@ -1,6 +1,8 @@
 type Query {
     accounts(nameFinder: String): [Account]
     accountById(id: ID): Account
+    accountsByBank(bic: String): AccountsByBank
+    accountsByBic(bic: String): [Account]
 }
 
 type Account{
@@ -18,4 +20,9 @@ type Bank{
     bic: String
     bankSortNumber: String
     branch: String
+}
+
+type AccountsByBank {
+    Bank: Bank,
+    accounts: [Account]
 }

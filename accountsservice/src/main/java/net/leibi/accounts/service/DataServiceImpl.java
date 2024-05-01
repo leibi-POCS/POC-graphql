@@ -2,6 +2,7 @@ package net.leibi.accounts.service;
 
 
 import net.leibi.accounts.generated.types.Account;
+import net.leibi.accounts.generated.types.AccountsByBank;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,16 @@ public final class DataServiceImpl implements DataService {
     @Override
     public Account getRandomAccount() {
         return dataSet.get(Random.from(new SecureRandom()).nextInt(upperBound - 1));
+    }
+
+    @Override
+    public AccountsByBank getAccountsByBankByBic(String bic) {
+        var accounts = getAccountsByBic(bic);
+        return new AccountsByBank(accounts.getFirst().getBank(), accounts);
+    }
+
+    @Override
+    public List<Account> getAccountsByBic(String bic) {
+        return dataSet.stream().filter(account -> account.getBank().getBic().equalsIgnoreCase(bic)).toList();
     }
 }
