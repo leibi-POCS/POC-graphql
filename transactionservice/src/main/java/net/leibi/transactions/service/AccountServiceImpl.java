@@ -1,5 +1,6 @@
 package net.leibi.transactions.service;
 
+import io.micrometer.observation.annotation.Observed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.leibi.transactions.datafetcher.AccountsDataFetcher;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Log4j2
+@Observed
 public class AccountServiceImpl implements AccountService {
 
     private final AccountsDataFetcher accountsDataFetcher;

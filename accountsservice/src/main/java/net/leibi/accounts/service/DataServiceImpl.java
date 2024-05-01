@@ -1,6 +1,7 @@
 package net.leibi.accounts.service;
 
 
+import io.micrometer.observation.annotation.Observed;
 import net.leibi.accounts.generated.types.Account;
 import net.leibi.accounts.generated.types.AccountsByBank;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 @Service
+@Observed
 public final class DataServiceImpl implements DataService {
 
     private final List<Account> dataSet = new ArrayList<>();

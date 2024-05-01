@@ -1,6 +1,7 @@
 package net.leibi.transactions.datafetcher;
 
 import com.netflix.graphql.dgs.*;
+import io.micrometer.observation.annotation.Observed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.leibi.transactions.generated.types.Account;
@@ -13,6 +14,7 @@ import java.util.Map;
 @DgsComponent
 @RequiredArgsConstructor
 @Log4j2
+@Observed
 public class TransactionsDataFetcher {
 
     private final TransactionDataService transactionDataService;

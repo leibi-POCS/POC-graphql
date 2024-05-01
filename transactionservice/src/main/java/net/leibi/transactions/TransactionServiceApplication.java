@@ -2,6 +2,8 @@ package net.leibi.transactions;
 
 import graphql.execution.instrumentation.Instrumentation;
 import graphql.execution.instrumentation.tracing.TracingInstrumentation;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j2;
 import net.leibi.transactions.generated.types.Transaction;
@@ -30,13 +32,15 @@ public class TransactionServiceApplication {
     public static final Random RANDOMFROM = Random.from(new SecureRandom());
     private final TransactionDataService transactionDataService;
     private final AccountService accountService;
+    private final ObservationRegistry observationRegistry;
 
     @Value("${application.upperbound:1000}")
     private int upperBound;
 
-    public TransactionServiceApplication(TransactionDataService transactionDataService, AccountService accountService) {
+    public TransactionServiceApplication(TransactionDataService transactionDataService, AccountService accountService, ObservationRegistry observationRegistry) {
         this.transactionDataService = transactionDataService;
         this.accountService = accountService;
+        this.observationRegistry = observationRegistry;
     }
 
     public static void main(String[] args) {
@@ -45,7 +49,11 @@ public class TransactionServiceApplication {
 
     @PostConstruct
     public void init() {
-        List<Transaction> data = getRandomData();
+        List<Transaction> data = Observation
+                .createNotStarted("getRandomTransactions", observationRegistry)
+                .observe(this::getRandomData);
+        assert (data != null);
+
         log.info("got {} transactions", data.size());
         transactionDataService.add(data);
     }

@@ -1,6 +1,7 @@
 package net.leibi.transactions.service;
 
 
+import io.micrometer.observation.annotation.Observed;
 import net.leibi.transactions.generated.types.Transaction;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Observed
 public class TransactionDataServiceImpl implements TransactionDataService {
 
     private final Map<String, List<Transaction>> mapAccountIdsToTransactions = new HashMap<>();
