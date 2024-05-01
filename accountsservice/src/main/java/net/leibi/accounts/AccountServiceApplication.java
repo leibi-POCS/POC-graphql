@@ -59,13 +59,14 @@ public class AccountServiceApplication {
 
     private @NotNull Account getAccount(Integer i) {
         String s = String.valueOf(i);
-        log.info("Creating account {}", s);
+        log.debug("Creating account {}", s);
         Bank bank = getBank(i);
         return new Account(UUID.randomUUID().toString(), s, s, s, bank);
     }
 
-    private Bank getBank(Integer i) {
-        return bankCache.computeIfAbsent(i, currentBankNumber -> {
+    private Bank getBank(Integer accountNumber) {
+        Integer bankNumber= accountNumber%100;
+        return bankCache.computeIfAbsent(bankNumber, currentBankNumber -> {
             String s = String.valueOf(currentBankNumber % 100);
             log.info("Creating bank {}", s);
             return new Bank(UUID.randomUUID().toString(), s, s, s, s);
