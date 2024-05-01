@@ -11,6 +11,6 @@ type Account @key(fields: "id") @extends {
 type Transaction {
     id: ID
     bookingText: String
-    Account: Account
+    accountid: String
     Amount: Float
 }

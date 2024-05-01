@@ -43,7 +43,7 @@ tasks.withType<Test> {
 
 tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
     generateClientv2 = true
-    packageName = "net.leibi.books.generated"
+    packageName = "net.leibi.accounts.generated"
 }
 tasks.withType<JavaCompile> { dependsOn("generateJava") }
 

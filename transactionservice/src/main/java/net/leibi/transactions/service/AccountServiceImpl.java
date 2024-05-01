@@ -2,8 +2,8 @@ package net.leibi.transactions.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import net.leibi.books.generated.types.Account;
 import net.leibi.transactions.datafetcher.AccountsDataFetcher;
+import net.leibi.transactions.generated.types.Account;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +21,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    @Cacheable("randomAccountCache")
+    @Cacheable("randomAccountinService")
     public Account getRandomAccount(Integer i) {
-        log.debug("Getting account with {}", i);
+        log.info("Getting account with {}", i);
         return accountsDataFetcher.getRandomAccount(i);
     }
 }

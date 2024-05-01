@@ -4,8 +4,8 @@ import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
 import lombok.RequiredArgsConstructor;
+import net.leibi.accounts.generated.types.Account;
 import net.leibi.accounts.service.DataService;
-import net.leibi.books.generated.types.Account;
 
 import java.util.List;
 

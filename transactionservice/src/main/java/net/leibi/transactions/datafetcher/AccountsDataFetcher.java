@@ -2,7 +2,7 @@ package net.leibi.transactions.datafetcher;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import net.leibi.books.generated.types.Account;
+import net.leibi.transactions.generated.types.Account;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +18,9 @@ public class AccountsDataFetcher {
         return accountsApi.getAccountBy(accountId);
     }
 
-    @Cacheable("randomAccount")
+    @Cacheable("randomAccountInFetcher")
     public Account getRandomAccount(Integer accountRelatedId) {
-        log.debug("get random account for {}", accountRelatedId);
+        log.info("get random account for {}", accountRelatedId);
         return accountsApi.getRandomAccount();
     }
 }

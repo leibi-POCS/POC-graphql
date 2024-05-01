@@ -1,7 +1,7 @@
 package net.leibi.transactions.service;
 
 
-import net.leibi.books.generated.types.Transaction;
+import net.leibi.transactions.generated.types.Transaction;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class TransactionDataServiceImpl implements TransactionDataService {
     @Override
     public void add(Transaction transaction) {
         mapAccountIdsToTransactions
-                .computeIfAbsent(transaction.getAccount().getId(), k -> new ArrayList<>())
+                .computeIfAbsent(transaction.getAccountid(), k -> new ArrayList<>())
                 .add(transaction);
 
     }

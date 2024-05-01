@@ -4,9 +4,9 @@ import graphql.execution.instrumentation.Instrumentation;
 import graphql.execution.instrumentation.tracing.TracingInstrumentation;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j2;
+import net.leibi.accounts.generated.types.Account;
+import net.leibi.accounts.generated.types.Bank;
 import net.leibi.accounts.service.DataService;
-import net.leibi.books.generated.types.Account;
-import net.leibi.books.generated.types.Bank;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -65,7 +65,7 @@ public class AccountServiceApplication {
     }
 
     private Bank getBank(Integer accountNumber) {
-        Integer bankNumber= accountNumber%100;
+        Integer bankNumber = accountNumber % 100;
         return bankCache.computeIfAbsent(bankNumber, currentBankNumber -> {
             String s = String.valueOf(currentBankNumber % 100);
             log.info("Creating bank {}", s);

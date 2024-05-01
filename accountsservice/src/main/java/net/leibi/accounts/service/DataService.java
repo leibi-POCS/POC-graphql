@@ -1,6 +1,7 @@
 package net.leibi.accounts.service;
 
-import net.leibi.books.generated.types.Account;
+
+import net.leibi.accounts.generated.types.Account;
 
 import java.util.List;
 

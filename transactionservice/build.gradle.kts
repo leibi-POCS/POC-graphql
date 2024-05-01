@@ -40,6 +40,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 
+    implementation("com.github.ben-manes.caffeine:caffeine")
+
     implementation("io.github.openfeign:feign-okhttp")
     implementation("io.github.openfeign:feign-jackson")
     implementation("io.github.openfeign:feign-micrometer")
@@ -58,7 +60,7 @@ tasks.withType<Test> {
 
 tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
     generateClientv2 = true
-    packageName = "net.leibi.books.generated"
+    packageName = "net.leibi.transactions.generated"
 }
 tasks.withType<JavaCompile> { dependsOn("generateJava") }
 

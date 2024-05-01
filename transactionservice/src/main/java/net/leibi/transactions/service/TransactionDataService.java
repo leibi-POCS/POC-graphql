@@ -1,7 +1,7 @@
 package net.leibi.transactions.service;
 
 
-import net.leibi.books.generated.types.Transaction;
+import net.leibi.transactions.generated.types.Transaction;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import graphql.execution.instrumentation.Instrumentation;
 import graphql.execution.instrumentation.tracing.TracingInstrumentation;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j2;
-import net.leibi.books.generated.types.Transaction;
+import net.leibi.transactions.generated.types.Transaction;
 import net.leibi.transactions.service.AccountService;
 import net.leibi.transactions.service.TransactionDataService;
 import org.jetbrains.annotations.NotNull;
@@ -55,15 +55,16 @@ public class TransactionServiceApplication {
     private List<Transaction> getRandomData() {
         log.info("Creating {} random Transactions", upperBound);
         return IntStream.range(1, upperBound)
+                .parallel()
                 .mapToObj(this::getTransaction)
                 .toList();
     }
 
     private @NotNull Transaction getTransaction(int i) {
         final var bookingText = String.valueOf(i);
-        var reducedNumber = i%100;
-        var account = accountService.getRandomAccount(reducedNumber);
+        var reducedNumber = i % 100;
+        var accountId = accountService.getRandomAccount(reducedNumber).getId();
         var id = UUID.randomUUID().toString();
-        return new Transaction(id, bookingText, account, (double) i);
+        return new Transaction(id, bookingText, accountId, (double) i);
     }
 }

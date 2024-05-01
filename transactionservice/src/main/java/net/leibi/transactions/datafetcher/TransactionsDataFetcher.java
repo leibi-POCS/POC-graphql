@@ -2,8 +2,8 @@ package net.leibi.transactions.datafetcher;
 
 import com.netflix.graphql.dgs.*;
 import lombok.RequiredArgsConstructor;
-import net.leibi.books.generated.types.Account;
-import net.leibi.books.generated.types.Transaction;
+import net.leibi.transactions.generated.types.Account;
+import net.leibi.transactions.generated.types.Transaction;
 import net.leibi.transactions.service.TransactionDataService;
 
 import java.util.List;
