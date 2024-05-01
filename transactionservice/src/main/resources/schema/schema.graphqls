@@ -1,0 +1,16 @@
+type Query {
+    transactions(minAmount: Float): [Transaction]
+    transactionById(id: ID): Transaction
+}
+
+type Account @key(fields: "id") @extends {
+    id: ID @external
+    transactions: [Transaction]
+}
+
+type Transaction {
+    id: ID
+    bookingText: String
+    Account: Account
+    Amount: Float
+}

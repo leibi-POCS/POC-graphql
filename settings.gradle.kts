@@ -2,5 +2,5 @@ rootProject.name = "POC-graphql"
 
 include("aggregation-service")
 include("accountsservice")
-include("authorservice")
+include("transactionservice")
 
