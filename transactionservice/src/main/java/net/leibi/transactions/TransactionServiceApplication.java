@@ -27,6 +27,7 @@ import java.util.stream.IntStream;
 @EnableCaching
 @EnableFeignClients
 public class TransactionServiceApplication {
+    public static final Random RANDOMFROM = Random.from(new SecureRandom());
     private final TransactionDataService transactionDataService;
     private final AccountService accountService;
 
@@ -63,14 +64,14 @@ public class TransactionServiceApplication {
     }
 
     private @NotNull Transaction getTransaction(int i) {
-        if (i % 1000 == 0) {
+        if (i % 100_000 == 0) {
             log.info("getTransaction {}", i);
         }
         final var bookingText = String.valueOf(i);
         var reducedNumber = i % 100;
         var accountId = accountService.getRandomAccount(reducedNumber).getId();
         var id = UUID.randomUUID().toString();
-        var amount = Double.valueOf(Random.from(new SecureRandom()).nextFloat(1000, 1000000));
+        var amount = Double.valueOf(RANDOMFROM.nextFloat(1000, 1000000));
         return new Transaction(id, bookingText, accountId, amount);
     }
 }
