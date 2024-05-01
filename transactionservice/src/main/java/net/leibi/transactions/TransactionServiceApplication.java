@@ -4,6 +4,7 @@ import graphql.execution.instrumentation.Instrumentation;
 import graphql.execution.instrumentation.tracing.TracingInstrumentation;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
+import io.micrometer.observation.annotation.Observed;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j2;
 import net.leibi.transactions.generated.types.Transaction;
@@ -28,6 +29,7 @@ import java.util.stream.IntStream;
 @Log4j2
 @EnableCaching
 @EnableFeignClients
+@Observed
 public class TransactionServiceApplication {
     public static final Random RANDOMFROM = Random.from(new SecureRandom());
     private final TransactionDataService transactionDataService;
@@ -49,6 +51,7 @@ public class TransactionServiceApplication {
 
     @PostConstruct
     public void init() {
+
         List<Transaction> data = Observation
                 .createNotStarted("getRandomTransactions", observationRegistry)
                 .observe(this::getRandomData);
