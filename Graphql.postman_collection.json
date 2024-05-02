@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "54c5f90c-1feb-4048-8c72-527009dda7c0",
+		"name": "Graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30307339"
+	},
+	"item": [
+		{
+			"name": "Get Transactions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Transactions($minAmount: Float) {\r\n  transactions(minAmount: $minAmount) {\r\n    accountid\r\n  }\r\n}",
+						"variables": "{\r\n  \"minAmount\": 999000\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Accounts by Bank",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query accountsByBank($bic: String) {\r\n  accountsByBank(bic: $bic) {\r\n    Bank {\r\n      bankSortNumber\r\n    }\r\n    accounts {\r\n      iban\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n  \"bic\": \"95\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Accounts by Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query accountsById($id: ID) {\r\n  accountById(id: $id){\r\n    bank{\r\n        bic\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n  \"id\": \"0022c10b-6e5c-488d-b760-e6f376933591\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Accounts by Bic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query accountsByBic($bic: String,$page: Int, $pageSize: Int) {\r\n  accountsByBic(bic: $bic, page: $page, pageSize: $pageSize) {\r\n    iban\r\n  }\r\n}",
+						"variables": "{\r\n  \"bic\": \"95\",\r\n  \"page\": 1,\r\n  \"pageSize\":10\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Accounts by Bic And Transactions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query accountsByBic($bic: String, $page: Int,$pageSize: Int){\r\n   accountsByBic(bic: $bic, page: $page, pageSize: $pageSize) {\r\n    iban\r\n    transactions {\r\n      bookingText\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n  \"bic\": \"7\",\r\n  \"page\":1,\r\n  \"pageSize\":1000\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

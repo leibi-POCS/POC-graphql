@@ -68,7 +68,7 @@ public class AccountServiceApplication {
         Integer bankNumber = accountNumber % 100;
         return bankCache.computeIfAbsent(bankNumber, currentBankNumber -> {
             String s = String.valueOf(currentBankNumber % 100);
-            log.info("Creating bank {}", s);
+            //log.info("Creating bank {}", s);
             return new Bank(UUID.randomUUID().toString(), s, s, s, s);
         });
     }
