@@ -12,16 +12,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
-@Observed
 public class AccountServiceImpl implements AccountService {
 
-    public static final Random RANDOM = new Random();
     private final AccountsDataFetcher accountsDataFetcher;
 
     @Value("${application.number.accounts:1000}")
