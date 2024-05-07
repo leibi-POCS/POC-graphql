@@ -1,9 +1,9 @@
 package net.leibi.transactions;
 
+import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.annotation.Observed;
 import jakarta.annotation.PostConstruct;
-import java.security.SecureRandom;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -50,13 +50,11 @@ public class TransactionServiceApplication {
 
   @PostConstruct
   public void init() {
-    /*
-           List<Transaction> data = Observation
-                   .createNotStarted("getRandomTransactions", observationRegistry)
-                   .observe(this::getRandomData);
-       assert (data != null);
-    */
-    List<Transaction> data = getRandomData();
+
+    List<Transaction> data =
+        Observation.createNotStarted("getRandomTransactions", observationRegistry)
+            .observe(this::getRandomData);
+    assert (data != null);
 
     log.info("got {} transactions", data.size());
     transactionDataService.add(data);
