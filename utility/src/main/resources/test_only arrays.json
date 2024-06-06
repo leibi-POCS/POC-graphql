@@ -1,0 +1,98 @@
+
+{
+  "book": [
+    {
+      "title": "Book 1",
+      "author": "Author 1",
+      "price": 10.00
+    },
+    {
+      "title": "Book 2",
+      "author": "Author 2",
+      "price": 20.00,
+      "isbn": "978-0-7432-7356-5",
+      "publisher": {"name" :"Scribner", "locations":[ "New York", "LA"]},
+      "categories": ["fiction", "science fiction", "mystery"]
+    },
+    {
+      "title": "Book 3",
+      "author": "Author 3",
+      "price": 30.00
+    },
+    {
+      "title": "Book 4",
+      "author": "Author 4",
+      "price": 40.00
+    }
+  ],
+  "customer": [    {
+      "name": "Jim Doe",
+      "age": 40,
+      "address":
+        {
+          "street": "123 Main St",
+          "city": "Springfield",
+          "state": "IL",
+          "zip": 62701,
+          "type": "home"
+        },
+      "phone": [
+
+        {
+          "type": "home",
+          "number": "555-1234"
+        },
+        {
+          "type": "work",
+          "number": "555-1235"
+        }
+      ]
+    },
+    {
+      "name": "Jane Doe",
+      "age": 40,
+      "address": [
+        {
+          "street": "123 Main St",
+          "city": "Springfield",
+          "state": "IL",
+          "zip": 62701,
+          "type": "home"
+        },
+        {
+          "street": "3 Main St",
+          "city": "Springfield",
+          "state": "IL",
+          "zip": 62701,
+          "type": "work"
+        }
+      ],
+      "phone": [
+        {
+          "type": "home",
+          "number": "555-1234"
+        },
+        {
+          "type": "work",
+          "number": "555-1235"
+        }
+      ]
+    }],
+  "infile": [
+    {
+      "field1": 11,
+      "field2": 12,
+      "field3": 13
+    },
+    {
+      "field1": 21,
+      "field2": 22,
+      "field3": 23
+    },
+    {
+      "field1": 31,
+      "field2": 32,
+      "field3": 33
+    }
+  ]
+}
