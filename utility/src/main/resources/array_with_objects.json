@@ -1,0 +1,93 @@
+
+[{
+  "book": [  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "price": 15.00,
+    "isbn": "978-0-7432-7356-5"
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "author": "John Steinbeck",
+    "price": 18.00,
+    "isbn": "978-0-14-303943-3"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "price": 20.00,
+    "isbn": "978-0-316-76948-0"
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "price": 15.00,
+    "isbn": "978-0-7432-7356-5"
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "author": "John Steinbeck",
+    "price": 18.00,
+    "isbn": "978-0-14-303943-3"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "price": 20.00,
+    "isbn": "978-0-316-76948-0"
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "price": 15.00,
+    "isbn": "978-0-7432-7356-5"
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "author": "John Steinbeck",
+    "price": 18.00,
+    "isbn": "978-0-14-303943-3"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "price": 20.00,
+    "isbn": "978-0-316-76948-0"
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "price": 15.00,
+    "isbn": "978-0-7432-73562-5"
+  }]
+},
+  {
+    "customer": {
+      "name": "Jim Doe",
+      "age": 40,
+      "address": {
+        "street": "123 Main St",
+        "city": "Springfield",
+        "state": "IL",
+        "zip": 62701,
+        "type": "home"
+      },
+      "phone": [
+        {
+          "type": "home",
+          "number": "555-1234"
+        },
+        {
+          "type": "work",
+          "number": "555-1235"
+        }
+      ]
+    }
+  },
+  {
+    "infile": []
+  },
+  {
+    "cost": 100.0
+  }
+]
